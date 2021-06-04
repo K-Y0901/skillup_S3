@@ -1,0 +1,4 @@
+<!--$('.table__favorite--'+<%#= @favorite.book_id%>).html("<%#= j(render 'favorites/book',  book: favorite.book, user: favorite.user ) %>")-->
+<!--$('#favorites_buttons_<%#= @book.id %>').html("<%#= j(render partial: 'favorites/book', locals: {book: favorite.book, user: favorite.user}) %>");-->
+<!--document.getElementById('.book_<%#= book.id %>').innerHTML = '<%#= j(render book) %>'-->
+$("#book_<%= @book.id %>").html("<%= j(render 'favorites/book', book: @book, user: current_user ) %>");

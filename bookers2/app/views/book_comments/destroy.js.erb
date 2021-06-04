@@ -1,0 +1,3 @@
+$("#comments__area").html("<%= j(render 'book_comments/table', book_comments: @book.book_comments ) %>");
+$(".detail__table").html("<%= j(render 'books/detail', book: @book ) %>");
+$("textarea").val('')
