@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
+  impressionist :actions=> [:show]
 
   def index
     @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
@@ -9,6 +10,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
+    
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def edit

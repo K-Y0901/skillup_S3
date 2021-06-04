@@ -22,7 +22,6 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
-
   
     @books = @user.books
     @book = Book.new
