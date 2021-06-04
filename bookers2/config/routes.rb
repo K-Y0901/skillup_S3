@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
 	devise_for :users, controllers: {
     sessions: "public/sessions",
     registrations: "public/registrations"
@@ -21,6 +22,10 @@ Rails.application.routes.draw do
   end
 
   resources :book_comments, only: [:destroy]
+  
+  resources :messages, :only => [:create]
+  
+  resources :rooms, :only => [:create, :show, :index]
 
   root 'home#top'
   get 'home/about'
