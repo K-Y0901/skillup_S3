@@ -54,14 +54,16 @@
         <tr>
           <% @this_week = Book.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day, user_id: @user.id).count %>
           <td><%= @this_week %></td>
-          <%#= @last_week = Book.where(created_at: 2.week.ago.beginning_of_day..Time.zone.1.week.ago.end_of_day, user_id: @user.id).count %>
-          <td><%#= @last_week %></td>
+          <% if @last_week = Book.where(created_at: (Time.zone.now - 13.day)..(Time.zone.now - 7.day), user_id: @user.id).count %>
+          <td><%= @last_week %></td>
+          <% else %>
+          <% end %>
           <td>
-            <%# if @this_week > 0 && @last_week > 0 %>
-              <%#= (@this_week / @last_week).round * 100 %> %
-            <%# else %>
+            <% if @this_week > 0 && @last_week > 0 %>
+              <%= (@this_week / @last_week).round * 100 %> %
+            <% else %>
               0 %
-            <%# end %>
+            <% end %>
           </td>
         </tr>
       </tbody>
