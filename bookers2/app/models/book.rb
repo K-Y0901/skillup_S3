@@ -1,17 +1,18 @@
 class Book < ApplicationRecord 
   
-	belongs_to :user
-	has_many :favorites, dependent: :destroy
+  belongs_to :user
+  has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   # いいね数順
   has_many :favorited_users, through: :favorites, source: :user
   
   
-	validates :title, presence: true
-	validates :body ,presence: true, length: {maximum: 200}
+  validates :title, presence: true
+  validates :body ,presence: true, length: {maximum: 200}
 	
-	# PV数カウント
-	is_impressionable
+  # PV数カウント
+  is_impressionable
+  
 
 
   def favorited_by?(user)
