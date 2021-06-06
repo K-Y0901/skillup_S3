@@ -40,5 +40,11 @@
       </tbody>
       </table>
     </div>
+    
+    <div>
+      <h5 style="text-align: center;">７日間の投稿数の比較</h5>
+      <%= line_chart Book.group_by_day(:created_at, last: 7).count %>
+    </div>
+    
   </div>
 </div>

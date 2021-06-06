@@ -12,11 +12,7 @@ class Book < ApplicationRecord
 	
   # PV数カウント
   is_impressionable
-  
-  
-  # from  = Time.(current - 13).at_beginning_of_day
-  # to    = (from + 6.day).at_end_of_day
-
+ 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
