@@ -28,9 +28,9 @@
       </thead>
       <tbody>
         <tr>
-          <% @today = Book.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day, user_id: @user.id).count %>
-          <td><%= @today %></td>
-          <% @yesterday = Book.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight, user_id: @user.id).count %>
+          <% @today = Book.where(created_at: Time.zone.now.all_day, user_id: current_user.id).count %>
+          <td><%= Book.where(created_at: Time.zone.now.all_day, user_id: @user.id).count %></td>
+          <% @yesterday = Book.where(created_at: 1.day.ago.all_day, user_id: current_user.id).count %>
           <td><%= @yesterday %></td>
           <td>
             <% if @today > 0 && @yesterday > 0 %>
