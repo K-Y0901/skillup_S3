@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :rooms, :only => [:create, :show, :index]
   
   resources :groups, :only => [:index, :create, :new, :edit, :update, :show]
+  
+  resources :group_users, :only => [:create, :destroy]
 
   root 'home#top'
   get 'home/about'

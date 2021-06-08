@@ -9,7 +9,7 @@
 
   <div class='col-xs-9'>
       <h2>Group detail</h2>
-        
+      <%= form_with url: group_users_path, method: :post, model: @group_user, local:true do |f| %>
       <table class='table'>
           <thead>
             <tr>
@@ -27,13 +27,19 @@
                <td><%= @group.introduction %></td>
                <td>メンバー</td>
                <% if @group.owner_id == current_user.id %>
-               <td><%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %></td>
+                   <td><%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %></td>
                <% else %>
-               <td><%= link_to 'Join this group', edit_group_path(@group), class: "btn btn-sm btn-success" %></td>
+               
+                    <%= f.hidden_field :group_id, :value => @group.id %>
+                    <td><%= f.submit "Join this group", class: "btn btn-sm btn-success" %></td>
+                  
+    
+                   <td><%= link_to 'Leave this group', group_user_path(@group), method: :delete, class: "btn-sm btn-danger"%></td>
                <% end %>
              </tr>
           </tbody>
       </table>
+      <% end %>
   </div>
   
 </div>
