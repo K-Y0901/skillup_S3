@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
     @book = Book.new
     @group = Group.find(params[:id])
     @group_user = GroupUser.new
+    @group_users = GroupUser.where(group_id: @group.id)
   end
   
   def new

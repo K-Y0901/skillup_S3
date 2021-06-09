@@ -25,16 +25,24 @@
                <td><%= attachment_image_tag(@group, :image, :fill, 100, 100, fallback: "no-image-icon.jpg") %></td>
                <td><%= @group.name %></td>
                <td><%= @group.introduction %></td>
-               <td>メンバー</td>
+               <td>
+                 <table>
+                  <% @group_users.each do |group_user| %>
+                    <tr>
+                      <td><%= group_user.user.name %></td>
+                    </tr>
+                  <% end %>
+                 </table>
+               </td>
                <% if @group.owner_id == current_user.id %>
                    <td><%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %></td>
                <% else %>
-               
+                   <% unless GroupUser.exists?(group_id: @group.id, user_id: current_user.id) %>
                     <%= f.hidden_field :group_id, :value => @group.id %>
                     <td><%= f.submit "Join this group", class: "btn btn-sm btn-success" %></td>
-                  
-    
-                   <td><%= link_to 'Leave this group', group_user_path(@group), method: :delete, class: "btn-sm btn-danger"%></td>
+                   <% else %>
+                    <td><%= link_to 'Leave this group', group_user_path(@group), method: :delete, class: "btn-sm btn-danger"%></td>
+                   <% end %>
                <% end %>
              </tr>
           </tbody>
