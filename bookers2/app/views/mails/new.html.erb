@@ -1,0 +1,17 @@
+<h2>Event Mail</h2>
+
+<%= form_with(model: @mail do |f| %>
+  <div class="field row">
+    <%= f.label :Title %>
+    <%= f.text_field :title, class: 'col-xs-12' %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :Content %>
+    <%= f.text_area :content, class: 'col-xs-12' %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>

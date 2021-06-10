@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :groups, :only => [:index, :create, :new, :edit, :update, :show]
   
   resources :group_users, :only => [:create, :destroy]
+  
+  resources :mails, :only => [:new, :create, :show]
 
   root 'home#top'
   get 'home/about'

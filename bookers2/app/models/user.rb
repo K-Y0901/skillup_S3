@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :group_users, dependent: :destroy
+  has_many :mails, dependent: :destroy
   
   # いいね数順
   has_many :favorited_books, through: :favorites, source: :book
