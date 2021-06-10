@@ -16,6 +16,7 @@ class MailsController < ApplicationController
     end
     
     def show
+        @mail = Mail.find(params[:id])
     end
     
     private
