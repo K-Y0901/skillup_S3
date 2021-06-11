@@ -8,7 +8,8 @@ class MailsController < ApplicationController
         @mail = Mail.new(mail_params)
         @mail.user_id = current_user.id
         if @mail.save
-          redirect_to mail_path(@mail)
+           NoticeEventMailer.notice_event_email(@mail).deliver
+           redirect_to mail_path(@mail)
         else
           @mail = Mail.new
           render :new
