@@ -27,16 +27,20 @@
         <td>コメント数: <%= book.book_comments.count %></td>
         <td>閲覧数： <%=  book.impressionist_count %></td>
         
-        <td class="movie-evaluation" data-score="<%= book.rate %>"></td>
-        <script>
-        $('.movie-evaluation').raty({
-          readOnly: true,
-          score: function() {
-            return $(this).attr('data-score');
-          },
-          path: '/assets/'
-        });
-        </script>
+        <!--星評価-->
+         <td id="star-rate-<%= book.id %>"></td>
+          <script>
+          $('#star-rate-<%= book.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= book.rate %>,
+          });
+          </script>  
+        <!--/星評価-->
       </tr>
     <% end %>
   </tbody>
