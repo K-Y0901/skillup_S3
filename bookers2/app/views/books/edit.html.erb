@@ -4,7 +4,40 @@
   <!-- <div class='col-md-3 col-md-offset-3'>
   </div> -->
   	<%= render 'layouts/errors', obj: @book %>
-		<%= render 'form', book: @book %>
+		<%= form_for(@book) do |f| %>
+          <div class="field row">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'col-xs-12 book_title' %>
+          </div>
+        
+          <div class="field row">
+            <%= f.label :opinion %>
+            <%= f.text_area :body, class: 'col-xs-12 book_body'%>
+          </div>
+          
+          <div id="evaluate_stars">
+            <label>評価</label>
+          </div>
+          
+          <!--星評価-->
+          <div id="star-rate-<%= @book.id %>"></div>
+          <script>
+          $('#star-rate-<%= @book.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @book.rate %>,
+          });
+          </script>  
+          <!--/星評価-->
+        
+          <div class="actions row">
+            <%= f.submit class: 'btn btn-primary col-xs-12'%>
+          </div>
+        <% end %>
 		<%= link_to 'Show', @book, class: "book_#{@book.id}" %> |
 		<%= link_to 'Back', books_path, class: "back" %>
     </div>
