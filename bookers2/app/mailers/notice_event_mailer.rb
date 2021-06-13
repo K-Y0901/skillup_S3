@@ -6,3 +6,5 @@ class NoticeEventMailer < ApplicationMailer
               :subject => 'Notice an Event' )
     end
 end
+
+
