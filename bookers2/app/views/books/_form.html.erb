@@ -8,6 +8,19 @@
     <%= f.label :opinion %>
     <%= f.text_area :body, class: 'col-xs-12 book_body'%>
   </div>
+  
+  <div id="evaluate_stars">
+    <label>評価</label>
+  </div>
+  
+  <script>
+  $('#evaluate_stars').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'book[rate]' //登録するモデル名とカラム名を記述
+  });
+  </script>
 
   <div class="actions row">
     <%= f.submit class: 'btn btn-primary col-xs-12'%>
