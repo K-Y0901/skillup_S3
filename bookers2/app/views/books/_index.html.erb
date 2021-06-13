@@ -26,6 +26,17 @@
         </td>
         <td>コメント数: <%= book.book_comments.count %></td>
         <td>閲覧数： <%=  book.impressionist_count %></td>
+        
+        <td class="movie-evaluation" data-score="<%= book.rate %>"></td>
+        <script>
+        $('.movie-evaluation').raty({
+          readOnly: true,
+          score: function() {
+            return $(this).attr('data-score');
+          },
+          path: '/assets/'
+        });
+        </script>
       </tr>
     <% end %>
   </tbody>
