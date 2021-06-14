@@ -12,6 +12,10 @@ class Book < ApplicationRecord
 	
   # PV数カウント
   is_impressionable
+  
+  # 一覧画面　並び替え
+  scope :latest, -> {order(created_at: :desc)}
+  scope :rate, -> {order(rate: :desc)}
  
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

@@ -3,8 +3,16 @@ class BooksController < ApplicationController
   impressionist :actions=> [:show]
 
   def index
-    @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     @book = Book.new
+    
+    if params[:sort_update]
+      @books = Book.latest  ##新しい順
+    elsif params[:rate_update]
+      @books = Book.rate  ##評価順
+    else
+      @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    end
+    
   end
 
   def show
