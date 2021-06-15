@@ -58,6 +58,12 @@ class BooksController < ApplicationController
     @books = Book.search(params[:search])
     render "index"
   end
+  
+  def category
+    @book = Book.new
+    @books = Book.where(category: params[:category])
+    render "index"
+  end
 
   private
     def book_params

@@ -13,12 +13,17 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
   
-  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  # フォローする
+  post 'follow/:id' => 'relationships#follow', as: 'follow' 
+  # フォロー外す
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
   
   resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create]
+    collection do
+       get :category
+     end
   end
   get 'search' => 'books#search'
 
