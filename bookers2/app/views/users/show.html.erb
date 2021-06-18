@@ -74,12 +74,17 @@
   
   <div>
     <!--検索機能の実装-->
+    <%= form_with model: @book, method: :patch, local:true do |f| %>
     <div>
       <!--フォーム-->
+      <%= f.date_field :created_at %>
+      <%= submit_tag '検索', :created_at => nil, class: 'btn btn-primary' %>
     </div>
+    <% end %>
     
     <div>
       <!--一覧-->
+      
     </div>
   </div>
   
