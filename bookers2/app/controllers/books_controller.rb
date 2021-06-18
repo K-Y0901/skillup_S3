@@ -59,6 +59,35 @@ class BooksController < ApplicationController
     render "index"
   end
   
+  def day_search
+    @user = current_user
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    # @day_search = Book.search(params[:day_search])
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
+  
+    @books = @user.books
+    @book = Book.new
+    
+    @day_search = Book.day_search(params[:day_search])
+    render "users/show"
+  end
+  
   def category
     @book = Book.new
     @books = Book.where(category: params[:category])

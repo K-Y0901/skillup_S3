@@ -2,7 +2,7 @@
   
   <div class='col-xs-3'>
     <h2>User info</h2>
-    <%= render 'info', user: @user,now: ''%>
+    <%= render 'users/info', user: @user,now: ''%>
 
     <h2>New book</h2>
     <%= render 'books/form', book: @book %>
@@ -72,23 +72,27 @@
   </div>
   
   
-  <div>
+  <div class = "search-form">
     <!--検索機能の実装-->
-    <%= form_with model: @search_book, method: :patch, local:true do |f| %>
-    <div>
+    <%= form_with url: day_search_path, method: :get, local: true do |f| %>
       <!--フォーム-->
-      <%= f.date_field :created_at %>
-      <%= submit_tag '検索', :created_at => nil, class: 'btn btn-primary' %>
-    </div>
+      <%= f.date_field :day_search %>
+      <%= f.submit '検索', :created_at => nil, class: 'btn btn-primary' %>
     <% end %>
     
-    <div>
+    <div class = "search-result">
       <!--一覧-->
-      
+      <% if @day_search %>
+       <h3>検索結果</h3>
+       <h4>投稿数</h4>
+       <%= @day_search.count %>
+      <% end %>
     </div>
+    
   </div>
   
   
   </div>
   
 </div>
+

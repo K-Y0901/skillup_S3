@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
+    # @day_search = Book.search(params[:day_search])
     if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|

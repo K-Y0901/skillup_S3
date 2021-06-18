@@ -19,10 +19,15 @@ class Book < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :rate, -> {order(rate: :desc)}
   
-  # 検索機能
+  # 検索機能（カテゴリー）
   def self.search(search)
     return Book.all unless search
     Book.where(['category LIKE ?', "%#{search}%"])
+  end
+  
+  # 検索機能（日付）
+  def self.day_search(day_search)
+    Book.where(created_at: day_search)
   end
  
   def favorited_by?(user)
