@@ -74,7 +74,7 @@
   
   <div>
     <!--検索機能の実装-->
-    <%= form_with model: @book, method: :patch, local:true do |f| %>
+    <%= form_with model: @search_book, method: :patch, local:true do |f| %>
     <div>
       <!--フォーム-->
       <%= f.date_field :created_at %>

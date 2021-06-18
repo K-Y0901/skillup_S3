@@ -25,7 +25,10 @@ Rails.application.routes.draw do
        get :category
      end
   end
+  # カテゴリー検索
   get 'search' => 'books#search'
+  # 日付検索
+  get 'day_search' => 'books#day_search'
 
   resources :book_comments, only: [:destroy]
   
