@@ -15,6 +15,7 @@ class MailsController < ApplicationController
         #       format.html { redirect_to @mail }
         #       format.json { render :show, status: :created, location: @mail }
         #   end
+        NoticeEventMailer.notice_event_email(@mail).deliver
         redirect_to mail_path(@mail)
         else
           @mail = Mail.new
