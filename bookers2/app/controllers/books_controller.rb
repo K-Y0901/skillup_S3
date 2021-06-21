@@ -63,7 +63,6 @@ class BooksController < ApplicationController
     @user = current_user
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
-    # @day_search = Book.search(params[:day_search])
     if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
@@ -83,8 +82,8 @@ class BooksController < ApplicationController
   
     @books = @user.books
     @book = Book.new
-    
-    @day_search = Book.day_search(params[:day_search])
+    @create_at = params[:day_search]
+    @day_search = @books.where(['created_at LIKE ? ', "#{@create_at}%"])
     render "users/show"
   end
   
