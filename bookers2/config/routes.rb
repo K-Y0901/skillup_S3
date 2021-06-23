@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   
   resources :group_users, :only => [:create, :destroy]
   
-  resources :mails, :only => [:new, :create, :show]
+  resources :mailings, :only => [:new, :create, :show]
 
   root 'home#top'
   get 'home/about'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_082515) do
+ActiveRecord::Schema.define(version: 2021_06_23_021448) do
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "book_id"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_082515) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
-  create_table "mails", force: :cascade do |t|
+  create_table "mailings", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.text "content"

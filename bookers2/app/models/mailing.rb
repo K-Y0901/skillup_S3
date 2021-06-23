@@ -1,4 +1,4 @@
-class Mail < ApplicationRecord
+class Mailing < ApplicationRecord
     belongs_to :user
     
     validates :title, presence: true
