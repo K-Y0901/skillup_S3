@@ -84,7 +84,6 @@ class BooksController < ApplicationController
     @book = Book.new
     @create_at = params[:day_search]
     @day_search = @books.where(['created_at LIKE ? ', "#{@create_at}%"])
-    render "users/show"
   end
   
   def category

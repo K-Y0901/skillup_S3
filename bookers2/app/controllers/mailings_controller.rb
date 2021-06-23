@@ -11,7 +11,7 @@ class MailingsController < ApplicationController
        
         if @mailing.save
         
-        NoticeEventMailer.notice_event_email(@mailing).deliver
+        # NoticeEventMailer.notice_event_email(@mailing).deliver
         redirect_to mailing_path(@mailing)
         else
           @mailing = Mailing.new
