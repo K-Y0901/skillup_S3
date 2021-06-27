@@ -5,7 +5,7 @@ require_relative 'application'
 Rails.application.initialize!
 
 
-
+# メール機能
 ActionMailer::Base.smtp_settings = {
   :user_name => 'apiky',
   :password => 'test',
