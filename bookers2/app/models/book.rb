@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  # いいね数順
+  # いいね数順(カラム新規作成）
   has_many :favorited_users, through: :favorites, source: :user
   
   

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :mailings, dependent: :destroy
   
-  # いいね数順
+  # いいね数順(カラム新規作成)
   has_many :favorited_books, through: :favorites, source: :book
   
   validates :name, presence: true, length: {maximum: 10, minimum: 2}
